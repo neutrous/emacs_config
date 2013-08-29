@@ -19,7 +19,6 @@
 	switch-window						; takes over C-x o
 	auto-complete						; complete as you type with overlays
 	zencoding-mode						; http://www.emacswiki.org/emacs/ZenCoding
-	markdown-mode						; the major mode for editing markdown format files.
 	(:name buffer-move					; have to add your own keys.
 	       :after (progn
 			(global-set-key (kbd "<C-S-up>")     'buf-move-up)
@@ -27,9 +26,9 @@
 			(global-set-key (kbd "<C-S-left>")   'buf-move-left)
 			(global-set-key (kbd "<C-S-right>")  'buf-move-right)))
 	
-	(:name evil
-	       :after (progn
-			'(evil-mode t)))
+	;; (:name evil
+	;;        :after (progn
+	;; 		'(evil-mode t)))
 	
 	;; (:name magit							; git meet emacs, and a binding
 	;;        :after (progn
@@ -40,20 +39,22 @@
 			(global-set-key (kbd "C-x C-/") 'goto-last-change))))
       )
 
-(unless (string-match "apple-darwin" system-configuration)
-  (loop for p in '(color-theme			; nice looking emacs
-		   color-theme-tango	; check out color-theme-solarized
-		   )
-	do (add-to-list 'el-get-sources p)))
+;; (unless (string-match "apple-darwin" system-configuration)
+;;   (loop for p in '(color-theme			; nice looking emacs
+;; 		   color-theme-tango	; check out color-theme-solarized
+;; 		   )
+;; 	do (add-to-list 'el-get-sources p)))
 
 ;; Specified the packages which want to synchronized.
 ;; I don't why when i added the following, the previous set would install.
 (setq packages
       (append
-       '(el-get switch-window escreen)
+       '(el-get evil markdown-mode switch-window escreen)
        (mapcar 'el-get-source-name el-get-sources)))
 
 ;; install new packages and init already installed packages
 (el-get 'sync packages)
+
+(evil-mode t)
 
 (provide 'init)
