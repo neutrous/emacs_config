@@ -1,0 +1,14 @@
+// 
+// This package defines the aircraftinfo structure.
+// 
+
+package Model;
+
+message AircraftInfo {
+  required string ID = 1;
+  required double Longitude = 2;
+  required double Latitude = 3;
+  required double Altitude = 4;
+  required double Speed = 5;
+  required double Direction = 6;
+}
