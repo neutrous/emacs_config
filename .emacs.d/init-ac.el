@@ -2,9 +2,6 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 
-;; load go autocomplete module
-(require 'go-autocomplete)
-
 ;; The most of following things were directly copied from chenbin's
 ;; configuration(github.com/redguardtoo/emacs.d/init-auto-complete.el). Thanks
 ;; for his contribution.

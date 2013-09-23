@@ -11,6 +11,9 @@
 ;; Load the protobuf mode
 (require 'init-protobuf)
 
+;; Load the customization of go mode
+(require 'init-go)
+
 ;; Disable auto-back-files
 (setq make-backup-files nil)
 
