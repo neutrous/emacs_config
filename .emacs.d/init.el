@@ -14,29 +14,37 @@
 ;; the el-get installer.
 (setq el-get-sources		    
       '(el-get							; el-get is self-hosting
-		escreen								; screen for emacs, C-\ C-h
-		go-mode								; if you're into go...
-		switch-window						; takes over C-x o
-		auto-complete						; complete as you type with overlays
-		zencoding-mode						; http://www.emacswiki.org/emacs/ZenCoding
-		(:name buffer-move					; have to add your own keys.
+		escreen							; screen for emacs, C-\ C-h
+		go-mode							; if you're into go...
+		switch-window					; takes over C-x o
+		auto-complete					; complete as you type with overlays
+		zencoding-mode					; http://www.emacswiki.org/emacs/ZenCoding
+		
+		(:name buffer-move					; have to add your own
+											; keys.
 			   :after (progn
-						(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-						(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-						(global-set-key (kbd "<C-S-left>")   'buf-move-left)
-						(global-set-key (kbd "<C-S-right>")  'buf-move-right)))
+						(global-set-key (kbd "<C-S-up>")     
+										'buf-move-up)
+						(global-set-key (kbd "<C-S-down>")   
+										'buf-move-down)
+						(global-set-key (kbd "<C-S-left>")   
+										'buf-move-left)
+						(global-set-key (kbd "<C-S-right>")  
+										'buf-move-right)))
 		
 		;; (:name evil
 		;;        :after (progn
 		;; 		'(evil-mode t)))
 		
-		;; (:name magit							; git meet emacs, and a binding
+		;; (:name magit					; git meet emacs, and a binding
 		;;        :after (progn
 		;; 		(global-set-key (kbd "C-x C-z") 'magit-status)))
 		
-		(:name goto-last-change				; move pointer back to last change
+		(:name goto-last-change			; move pointer back to last
+										; change
 			   :after (progn
-						(global-set-key (kbd "C-x C-/") 'goto-last-change)))
+						(global-set-key (kbd "C-x C-/") 
+										'goto-last-change)))
 		
 		(:name go-errcheck
 			   :website "https://github.com/dominikh/go-errcheck.el"
@@ -47,9 +55,17 @@
 	  
 	    (:name go-eldoc
 			   :website "https://github.com/syohex/emacs-go-eldoc"
-			   :description "go-eldoc.el provides eldoc for go language."
+			   :description "go-eldoc.el provides eldoc for go
+			   language."
 			   :type git
 			   :url "https://github.com/syohex/emacs-go-eldoc.git")
+		
+		(:name fill-column-indicator	; Draw a fill indicator line.
+			   :after (progn
+						(define-globalized-minor-mode
+						  global-fci-mode fci-mode (lambda() 
+													 (fci-mode 1)))
+						(global-fci-mode t)))
 	  ))
 
 ;; (unless (string-match "apple-darwin" system-configuration)
@@ -58,8 +74,8 @@
 ;; 		   )
 ;; 	do (add-to-list 'el-get-sources p)))
 
-;; Specified the packages which want to synchronized.
-;; I don't why when i added the following, the previous set would install.
+;; Specified the packages which want to synchronized.  I don't why
+;; when i added the following, the previous set would install.
 (setq packages
       (append
        '(el-get evil markdown-mode switch-window escreen)

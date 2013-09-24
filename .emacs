@@ -14,6 +14,13 @@
 ;; Load the customization of go mode
 (require 'init-go)
 
+;; Load the customization of python mode
+(require 'init-py)
+
+;; Auto load the ido mode itself
+(require 'ido)
+(ido-mode t)
+
 ;; Disable auto-back-files
 (setq make-backup-files nil)
 
@@ -85,3 +92,6 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Monaco" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
  )
+									  
+;; Color the shell text
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)

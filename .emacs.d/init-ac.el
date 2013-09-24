@@ -16,7 +16,7 @@
 ;; extra modes auto-complete must support 
 (dolist (mode '(magit-log-edit-mode org-mode text-mode
 		html-mode emacs-lisp-mode markdown-mode
-		go-mode c++-mode c-mode))
+		go-mode c++-mode c-mode python-mode))
   (add-to-list 'ac-modes mode))
 
 ;; Exclude very large buffers from dabbrev
