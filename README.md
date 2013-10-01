@@ -1,16 +1,27 @@
-# Description #
+## Description ##
 
-My personal emacs configuration
+	My personal emacs configuration
 
+## Configurations ##
 
-# Configurations #
+### Go configuration dependencies ###
 
-## Golang relevant packages configurations. ##
-
-1. Some configurations depends on the sources of go, check
+	Some configurations depends on the sources of go, check  
 the *.el files for details.
 
-# TODO #
+### Python configuration dependencies ###
 
-1. Add my personal c++ supporting configurations
-2. Add my personal python supporting configurations
+* jedi/epc
+
+	These packages would be automatically downloaded when connected with the internet.
+  
+* pycheckers/pep
+
+	Downloads [pycheckers](https://pypi.python.org/pypi/PyChecker) here.  
+
+	Uses the following command to install pep package:  
+	`python pip install pep`
+
+## TODO ##
+
+* Add my personal c++ supporting configurations
