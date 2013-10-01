@@ -21,7 +21,7 @@
 		zencoding-mode					; http://www.emacswiki.org/emacs/ZenCoding
 		
 		(:name buffer-move					; have to add your own
-											; keys.
+										; keys.
 			   :after (progn
 						(global-set-key (kbd "<C-S-up>")     
 										'buf-move-up)
@@ -52,7 +52,7 @@
 	       invoke errcheck from within Emacs."
 			   :type git
 			   :url "https://github.com/dominikh/go-errcheck.el.git")
-	  
+		
 	    (:name go-eldoc
 			   :website "https://github.com/syohex/emacs-go-eldoc"
 			   :description "go-eldoc.el provides eldoc for go
@@ -62,11 +62,44 @@
 		
 		(:name fill-column-indicator	; Draw a fill indicator line.
 			   :after (progn
+						(setq-default fci-rule-column 80)
+						(setq fci-handle-truncate-lines nil)
 						(define-globalized-minor-mode
 						  global-fci-mode fci-mode (lambda() 
 													 (fci-mode 1)))
-						(global-fci-mode t)))
-	  ))
+						(global-fci-mode t)
+						(defun auto-fci-mode (&optional unused)
+						  (if (> (window-width) fci-rule-column)
+							  (fci-mode 1)
+							(fci-mode 0))
+						  )
+						(add-hook 'after-change-major-mode-hook 'auto-fci-mode)
+						(add-hook 'window-configuration-change-hook 'auto-fci-mode)))
+		
+		(:name emacs-deffered			; epc dependencies
+			   :website "https://github.com/kiwanami/emacs-deferred"
+			   :description "provides facilities to manage asynchronous task."
+			   :type git
+			   :url "https://github.com/kiwanami/emacs-deferred.git")
+		
+		(:name ctable 					; epc dependencies
+			   :website "https://github.com/kiwanami/emacs-ctable"
+			   :description "table content for emacs lisp"
+			   :type git
+			   :url "https://github.com/kiwanami/emacs-ctable.git")
+		
+		(:name epc 						; the emacs RPC
+			   :website "https://github.com/kiwanami/emacs-epc"
+			   :description "The Emacs RPC"
+			   :type git
+			   :url "https://github.com/kiwanami/emacs-epc.git")
+
+		(:name jedi 					; python completion for emacs
+			   :website "https://github.com/tkf/emacs-jedi"
+			   :description "Python auto-completion for Emacs"
+			   :type git
+			   :url "https://github.com/tkf/emacs-jedi.git")
+		))
 
 ;; (unless (string-match "apple-darwin" system-configuration)
 ;;   (loop for p in '(color-theme			; nice looking emacs
