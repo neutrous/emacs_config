@@ -19,6 +19,7 @@
 		switch-window					; takes over C-x o
 		auto-complete					; complete as you type with overlays
 		zencoding-mode					; http://www.emacswiki.org/emacs/ZenCoding
+		yasnippet						; code templates
 		
 		(:name buffer-move					; have to add your own
 										; keys.
@@ -65,14 +66,16 @@
 						(setq-default fci-rule-column 80)
 						(setq fci-handle-truncate-lines nil)
 						(define-globalized-minor-mode
-						  global-fci-mode fci-mode (lambda() 
+						  global-fci-mode fci-mode (lambda()
 													 (fci-mode 1)))
 						(global-fci-mode t)
 						(defun auto-fci-mode (&optional unused)
-						  (if (> (window-width) fci-rule-column)
-							  (fci-mode 1)
-							(fci-mode 0))
-						  )
+						  (if (not (eq  major-mode 'doc-view-mode))
+							  (if (> (window-width) fci-rule-column)
+								  (fci-mode 1)
+								(fci-mode 0))
+							(fci-mode 0)
+							))
 						(add-hook 'after-change-major-mode-hook 'auto-fci-mode)
 						(add-hook 'window-configuration-change-hook 'auto-fci-mode)))
 		
@@ -99,6 +102,12 @@
 			   :description "Python auto-completion for Emacs"
 			   :type git
 			   :url "https://github.com/tkf/emacs-jedi.git")
+		
+		(:name auto-complete-clang		; C/C++ auto complete using clang engine.
+			   :website "https://github.com/brianjcj/auto-complate-clang"
+			   :description "The AC sources for Clang."
+			   :type git
+			   :url "https://github.com/brianjcj/auto-complete-clang.git")
 		))
 
 ;; (unless (string-match "apple-darwin" system-configuration)

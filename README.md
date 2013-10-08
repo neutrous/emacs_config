@@ -22,6 +22,19 @@ the *.el files for details.
 	Uses the following command to install pep package:  
 	`python pip install pep`
 
-## TODO ##
+### C/C++ configuration dependencies ###
 
-* Add my personal c++ supporting configurations
+* clang
+
+	[clang](http://clang.llvm.org) a C language family frontend for LLVM.  
+	Clang could provide a fast intepretion engine for C/C++ code.
+
+* Others
+
+	The configuration could automatically download dependencies, so anything  
+	you could do is to connect to the internet. :)
+
+### ATTENTIONs ###
+
+	Uses [Ctrl-TAB] to facilitate the autocompletion in CC mode.
+

@@ -10,12 +10,14 @@
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
-(setq jedi:tooltip-method nil)
+;; tooltip showing in the minibuffer is conflict with the display of
+;; pyflycheckers.
+;;(setq jedi:tooltip-method nil)
 
 ;; set the color of the argument
-(set-face-attribute 'jedi:highlight-function-argument nil
-					:underline t :foreground "green"
-					:weight 'bold)
+;; (set-face-attribute 'jedi:highlight-function-argument nil
+;; 					:underline t :foreground "green"
+;; 					:weight 'bold)
 
 
 ;; TODO: add the following region into python-mode hook
