@@ -17,6 +17,9 @@
 ;; Load the customization of python mode
 (require 'init-py)
 
+;; Load the customization of C/C++ mode
+(require 'init-clang)
+
 ;; Auto load the ido mode itself
 (require 'ido)
 (ido-mode t)
@@ -54,7 +57,13 @@
 ;; ================== Display Setting =================
 ;; Display the row number default.
 ;; The following setting is conflict with doc-view
-(global-linum-mode t)
+(defun enable_linum_mode() 
+  (if (not (eq major-mode 'doc-view-mode))
+	  (linum-mode t)
+	(progn
+	  (linum-mode -1)
+	  (blink-cursor-mode -1))))
+(add-hook 'after-change-major-mode-hook 'enable_linum_mode)
 
 ;; Display the column number by default.
 (column-number-mode t)
@@ -81,6 +90,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (tango-dark)))
  '(markdown-coding-system (quote utf-8))
  '(markdown-command "markdown")
  '(markdown-open-command "markdown")
@@ -90,7 +100,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Monaco" :foundry "unknown" :slant normal :weight normal :height 98 :width normal)))))
+ '(default ((t (:family "Monaco" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
+ '(cursor ((t (:background "dark gray")))))
 									  
 ;; Color the shell text
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)

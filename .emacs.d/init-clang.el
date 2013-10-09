@@ -8,8 +8,8 @@
 											 ac-source-dictionary
 											 ac-source-words-in-same-mode-buffers)
 						   ac-sources))
-(local-set-key (kbd "<C-tab>") 'ac-complete-clang))
-(yas-minor-mode))
+  (local-set-key (kbd "<C-tab>") 'ac-complete-clang)
+  (yas-minor-mode-on)))
 
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
 (add-hook 'c++-mode-hook 'my-ac-cc-mode-setup)
@@ -28,3 +28,5 @@
 /usr/include
 "
 )))
+
+(provide 'init-clang)
