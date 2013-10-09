@@ -21,7 +21,7 @@
 		zencoding-mode					; http://www.emacswiki.org/emacs/ZenCoding
 		yasnippet						; code templates
 		
-		(:name buffer-move					; have to add your own
+		(:name buffer-move				; have to add your own
 										; keys.
 			   :after (progn
 						(global-set-key (kbd "<C-S-up>")     
