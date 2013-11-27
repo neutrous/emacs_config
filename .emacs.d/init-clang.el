@@ -9,7 +9,9 @@
 											 ac-source-words-in-same-mode-buffers)
 						   ac-sources))
   (local-set-key (kbd "<C-tab>") 'ac-complete-clang)
-  (yas-minor-mode-on)))
+  (yas-minor-mode-on)
+  (flymake-mode -1))
+  (setq indent-tabs-mode nil))
 
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
 (add-hook 'c++-mode-hook 'my-ac-cc-mode-setup)

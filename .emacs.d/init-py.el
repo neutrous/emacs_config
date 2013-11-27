@@ -8,6 +8,7 @@
 (autoload 'python-mode "python mode" "Python editing mode." t)
 
 (add-hook 'python-mode-hook 'jedi:setup)
+(add-hook 'python-mode-hook 'yas-minor-mode-on)
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
 ;; tooltip showing in the minibuffer is conflict with the display of

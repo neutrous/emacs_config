@@ -19,7 +19,11 @@
 		switch-window					; takes over C-x o
 		auto-complete					; complete as you type with overlays
 		zencoding-mode					; http://www.emacswiki.org/emacs/ZenCoding
-		yasnippet						; code templates
+		
+		;; If emacs launching becomes slower than before, just comment
+		;; the fllowing loading snippets.
+		(:name yasnippet				; code templates
+			   :after (mapc 'yas/load-directory yas/root-directory))
 		
 		(:name buffer-move				; have to add your own
 										; keys.
@@ -37,9 +41,13 @@
 		;;        :after (progn
 		;; 		'(evil-mode t)))
 		
-		;; (:name magit					; git meet emacs, and a binding
-		;;        :after (progn
-		;; 		(global-set-key (kbd "C-x C-z") 'magit-status)))
+		(:name magit					; git meet emacs, and a binding
+			   :website https://github.com/magit/magit
+			   :description "Interface to the git vc."
+			   :type git
+			   :url "https://github.com/magit/magit.git"
+		       :after (progn
+						(global-set-key (kbd "C-x C-z") 'magit-status)))
 		
 		(:name goto-last-change			; move pointer back to last
 										; change

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: -*- mode: xxx -*-
+# key: mode
+# --
+`(comment-indent) -*- mode: `mode-name -*-
