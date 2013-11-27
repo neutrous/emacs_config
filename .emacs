@@ -5,6 +5,9 @@
 ;; Uses el-get to do some magic intialization works!
 (require 'init)
 
+;; Load the org mode configuration
+(require 'init-org)
+
 ;; Customize the ac module
 (require 'init-ac)
 

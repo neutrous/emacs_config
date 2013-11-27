@@ -40,15 +40,7 @@
 		;; (:name evil
 		;;        :after (progn
 		;; 		'(evil-mode t)))
-		
-		(:name magit					; git meet emacs, and a binding
-			   :website https://github.com/magit/magit
-			   :description "Interface to the git vc."
-			   :type git
-			   :url "https://github.com/magit/magit.git"
-		       :after (progn
-						(global-set-key (kbd "C-x C-z") 'magit-status)))
-		
+				
 		(:name goto-last-change			; move pointer back to last
 										; change
 			   :after (progn

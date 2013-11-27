@@ -21,9 +21,9 @@ fi
 	
 cp $HOME/.emacs ./
 
-git add .emacs
-git add ./.emacs.d/*.el
-git add README.md
-git add update.sh
+# git add .emacs
+# git add ./.emacs.d/*.el
+# git add README.md
+# git add update.sh
 
-git commit -m "$1"
+# git commit -m "$1"
