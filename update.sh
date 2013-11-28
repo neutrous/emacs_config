@@ -9,13 +9,13 @@ cp -f $HOME/.emacs.d/*.el ./.emacs.d/
 
 # copy the snippets
 if [ -e $HOME/.emacs.d/snippets ]; then
-	cp -Ruf $HOME/.emacs.d/snippets/ ./.emacs.d/
+	cp -Rf $HOME/.emacs.d/snippets/ ./.emacs.d/snippets
 	git add ./.emacs.d/snippets
 fi
 
 # copy the extra info files
 if [ -e $HOME/.emacs.d/info ]; then
-	cp -Ruf $HOME/.emacs.d/info/ ./.emacs.d/
+	cp -Rf $HOME/.emacs.d/info/ ./.emacs.d/info
 	git add -A ./.emacs.d/info
 fi
 	

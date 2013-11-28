@@ -2,11 +2,12 @@
 ;; initial/install required packages first.
 (add-to-list 'load-path "~/.emacs.d")
 
+;; package.el initialized first
+(setq package-enable-at-startup nil)
+(package-initialize)
+
 ;; Uses el-get to do some magic intialization works!
 (require 'init)
-
-;; Load the org mode configuration
-(require 'init-org)
 
 ;; Customize the ac module
 (require 'init-ac)
@@ -74,7 +75,31 @@
 ;; Display the column number by default.
 (column-number-mode t)
 
-(when (string-match "linux" system-configuration)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(custom-enabled-themes (quote (tango)))
+ '(markdown-coding-system (quote utf-8))
+ '(markdown-command "markdown")
+ '(markdown-open-command "markdown")
+ '(tab-width 4))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Monaco" :foundry "unknown" :slant normal :weight normal :height 120 :width normal))))
+ '(cursor ((t (:background "dark gray")))))
+									  
+;; Color the shell text
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'shell-mode-hook (lambda() (setq word-wrap t)))
+(put 'narrow-to-region 'disabled nil)
+
+(when (eq system-type 'linux)
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -92,25 +117,9 @@
  '(markdown-command "markdown")
  '(markdown-open-command "markdown"))
 )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tango)))
- '(markdown-coding-system (quote utf-8))
- '(markdown-command "markdown")
- '(markdown-open-command "markdown")
- '(tab-width 4))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Monaco" :foundry "unknown" :slant normal :weight normal :height 98 :width normal))))
- '(cursor ((t (:background "dark gray")))))
-									  
-;; Color the shell text
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(add-hook 'shell-mode-hook (lambda() (setq word-wrap t)))
-(put 'narrow-to-region 'disabled nil)
+
+;; Customize the special key bindings for MacOS
+(when (eq system-type 'darwin)			; mac specific settings
+  (setq mac-option-modifier 'alt)
+  (setq mac-command-modifier 'meta)
+  (global-set-key [kp-delete] 'delete-char))

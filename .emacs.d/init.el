@@ -16,7 +16,6 @@
       '(el-get							; el-get is self-hosting
 		escreen							; screen for emacs, C-\ C-h
 		go-mode							; if you're into go...
-		switch-window					; takes over C-x o
 		auto-complete					; complete as you type with overlays
 		zencoding-mode					; http://www.emacswiki.org/emacs/ZenCoding
 		
@@ -25,8 +24,7 @@
 		(:name yasnippet				; code templates
 			   :after (mapc 'yas/load-directory yas/root-directory))
 		
-		(:name buffer-move				; have to add your own
-										; keys.
+		(:name buffer-move				; have to add your own keys.
 			   :after (progn
 						(global-set-key (kbd "<C-S-up>")     
 										'buf-move-up)
@@ -36,6 +34,11 @@
 										'buf-move-left)
 						(global-set-key (kbd "<C-S-right>")  
 										'buf-move-right)))
+		
+		(:name switch-window
+			   :after (progn
+						(global-set-key (kbd "C-x o")
+										'switch-window)))
 		
 		;; (:name evil
 		;;        :after (progn
