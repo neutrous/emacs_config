@@ -126,6 +126,8 @@
        '(el-get evil markdown-mode switch-window escreen)
        (mapcar 'el-get-source-name el-get-sources)))
 
+(package-initialize)
+
 ;; install new packages and init already installed packages
 (el-get 'sync packages)
 

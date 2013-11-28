@@ -4,7 +4,6 @@
 
 ;; package.el initialized first
 (setq package-enable-at-startup nil)
-(package-initialize)
 
 ;; Uses el-get to do some magic intialization works!
 (require 'init)
@@ -120,6 +119,11 @@
 
 ;; Customize the special key bindings for MacOS
 (when (eq system-type 'darwin)			; mac specific settings
-  (setq mac-option-modifier 'alt)
+  (setq mac-option-modifier 'control)
   (setq mac-command-modifier 'meta)
-  (global-set-key [kp-delete] 'delete-char))
+  (global-set-key [kp-delete] 'delete-char)
+  (set-frame-font "Monaco-14")			; for non-chinese character
+  (set-fontset-font 
+   (frame-parameter nil 'font)
+   'han
+   (font-spec :family "楷体-简")))

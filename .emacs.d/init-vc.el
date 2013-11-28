@@ -5,6 +5,10 @@
 ;; Master branch (Developing branch)
 ;; (add-to-list 'package-archives
 ;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-load-list '(all))
+(unless (package-installed-p 'magit)
+  (package-install 'magit))
+(package-initialize)
 
 ;; Manually install magit if not so.
 ;; M-x package-install RET magit RET
