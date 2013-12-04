@@ -15,5 +15,21 @@
 (package-initialize)					; Initialize & Install Package
 
 ;; Do some extra settings.
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+
+;; The variable is only taking effect under the version 24.1 or later.
+(custom-set-variables
+ '(org-catch-invisible-edits (quote show)))
+
+;; When TODO items have been done, then the following settings would
+;; cause the timestamp to be made.
+(setq org-log-done 'time)
+(setq org-log-done-with-time t)
+;; add another note message?
+;; (setq org-log-done 'note)
 
 (provide 'init-org)
+

@@ -5,6 +5,8 @@
 ;; package.el initialized first
 (setq package-enable-at-startup nil)
 
+(prefer-coding-system 'utf-8)
+
 ;; Uses el-get to do some magic intialization works!
 (require 'init)
 
@@ -25,6 +27,9 @@
 
 ;; Load the info configuration to support extra info files.
 (require 'init-vc)
+
+;; Load the org module
+(require 'init-org)
 
 ;; Auto load the ido mode itself
 (require 'ido)
@@ -79,11 +84,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(column-number-mode t)
- '(custom-enabled-themes (quote (tango)))
- '(markdown-coding-system (quote utf-8))
- '(markdown-command "markdown")
- '(markdown-open-command "markdown")
+ '(custom-enabled-themes (quote (light-blue)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -119,6 +122,9 @@
 
 ;; Customize the special key bindings for MacOS
 (when (eq system-type 'darwin)			; mac specific settings
+  (custom-set-variables
+   '(custom-enabled-themes (quote (light-blue)))
+   )
   (setq mac-option-modifier 'control)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char)
