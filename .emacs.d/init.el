@@ -15,7 +15,6 @@
 (setq el-get-sources		    
       '(el-get							; el-get is self-hosting
 		escreen							; screen for emacs, C-\ C-h
-		go-mode							; if you're into go...
 		auto-complete					; complete as you type with overlays
 		zencoding-mode					; http://www.emacswiki.org/emacs/ZenCoding
 		

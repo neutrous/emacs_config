@@ -2,6 +2,16 @@
 ;; initial/install required packages first.
 (add-to-list 'load-path "~/.emacs.d")
 
+;; bash-completion.el
+;; (autoload 'bash-completion-dynamic-complete 
+;;   "bash-completion"
+;;   "BASH completion hook")
+;; (add-hook 'shell-dynamic-complete-functions
+;;   'bash-completion-dynamic-complete)
+;; (add-hook 'shell-command-complete-functions
+;;   'bash-completion-dynamic-complete)
+(require 'shell-completion)
+
 ;; package.el initialized first
 (setq package-enable-at-startup nil)
 
@@ -65,6 +75,13 @@
 ;;   ; was dired-up-directory
 ;;  ))
 
+;; ================== Moving Setting =================
+;; Undo the window count settings.
+;; Uses <C-c left> or <C-c right>
+(when (fboundp 'winner-mode) 
+  (winner-mode) 
+  (windmove-default-keybindings))
+
 ;; ================== Display Setting =================
 ;; Display the row number default.
 ;; The following setting is conflict with doc-view
@@ -86,7 +103,11 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(column-number-mode t)
- '(custom-enabled-themes (quote (light-blue)))
+ '(custom-enabled-themes (quote (misterioso)))
+ '(custom-safe-themes (quote ("9fd20670758db15cc4d0b4442a74543888d2e445646b25f2755c65dcd6f1504b" default)))
+ '(flycheck-highlighting-mode (quote lines))
+ '(flycheck-indication-mode nil)
+ '(org-catch-invisible-edits (quote show))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -97,6 +118,7 @@
  '(cursor ((t (:background "dark gray")))))
 									  
 ;; Color the shell text
+(autoload 'ansi-color-for-comint-mode-on "ansi-color" nil t)
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'shell-mode-hook (lambda() (setq word-wrap t)))
 (put 'narrow-to-region 'disabled nil)
@@ -123,12 +145,14 @@
 ;; Customize the special key bindings for MacOS
 (when (eq system-type 'darwin)			; mac specific settings
   (custom-set-variables
-   '(custom-enabled-themes (quote (light-blue)))
+   '(custom-enabled-themes (quote (misterioso)))
    )
   (setq mac-option-modifier 'control)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char)
   (set-frame-font "Monaco-14")			; for non-chinese character
+  ;; todo: the following things may cause failure on the
+  ;; console-opening mode.
   (set-fontset-font 
    (frame-parameter nil 'font)
    'han

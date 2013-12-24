@@ -1,5 +1,6 @@
 ;; Configurations for C/C++ Autocomplete.
 (require 'auto-complete-clang)
+(require 'google-c-style)
 
 (defun my-ac-cc-mode-setup()
   (progn
@@ -11,9 +12,18 @@
   (local-set-key (kbd "<C-tab>") 'ac-complete-clang)
   (yas-minor-mode-on)
   (flymake-mode -1))
-  (setq indent-tabs-mode nil))
+  (setq indent-tabs-mode nil)
+  (append '(semantic-default-submodes global-semanticdb-minor-mode
+									  global-semantic-mru-bookmark-mode
+									  global-semantic-highlight-func-mode
+									  global-semanticdb-minor-mode))
+  (semantic-mode 1))
+
+(require 'semantic/ia)
 
 (add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c++-mode-hook 'my-ac-cc-mode-setup)
 
 ;; Standard include directories setting
