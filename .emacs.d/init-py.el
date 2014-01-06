@@ -8,6 +8,8 @@
 								   interpreter-mode-alist))
 (autoload 'python-mode "python mode" "Python editing mode." t)
 
+;; please uses `pip install jedi' first.
+;; and then uses el-get to install jedi.
 (add-hook 'python-mode-hook 'jedi:setup)
 (add-hook 'python-mode-hook 'yas-minor-mode-on)
 (setq jedi:setup-keys t)
@@ -28,9 +30,32 @@
 (setq indent-tabs-mode nil)
 (setq default-tab-width 4)
 
+;; pymacs
+;; you should using google to search and download pymacs.
+(add-to-list 'load-path "~/.emacs.d/pymacs-0.25")
+(autoload 'pymacs-apply "pymacs")
+(autoload 'pymacs-call "pymacs")
+(autoload 'pymacs-eval "pymacs" nil t)
+(autoload 'pymacs-exec "pymacs" nil t)
+(autoload 'pymacs-load "pymacs" nil t)
+(autoload 'pymacs-autoload "pymacs")
+
+;; ropemacs
+;; please google to download the ropemacs first.
+;; see ropemacs/Readme.txt for help
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; pyflakes configurations.
+;; pyflakes configurations. One more pychechers.sh need, this file
+;; should contain the following commands: (uses pip to install them)
+;; pyflakes $1
+;; pep8 --show-source $1 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq pycheckers-command "~/.emacs.d/pycheckers")
+(autoload 'flymake-pycheckers "flymake-pycheckers" 
+  "Pycheckers flymake support." t)
+
 (add-hook 'find-file-hooks 'flymake-find-file-hook)
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
@@ -44,9 +69,6 @@
 (load-library "flymake-cursor")
 (global-set-key [f10] 'flymake-goto-prev-error)
 (global-set-key [f11] 'flymake-goto-next-error)
-
-;; please cp/ln $PWD/pychekers into the place where the command could
-;; be found.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; IPython configurations...

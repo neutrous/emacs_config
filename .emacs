@@ -10,7 +10,6 @@
 ;;   'bash-completion-dynamic-complete)
 ;; (add-hook 'shell-command-complete-functions
 ;;   'bash-completion-dynamic-complete)
-(require 'shell-completion)
 
 ;; package.el initialized first
 (setq package-enable-at-startup nil)
