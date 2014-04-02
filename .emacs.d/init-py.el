@@ -28,7 +28,6 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 (setq indent-tabs-mode nil)
-(setq default-tab-width 4)
 
 ;; pymacs
 ;; you should using google to search and download pymacs.
@@ -90,5 +89,6 @@
 
 ;; try to automatically figure out indentation
 (setq py-smart-indentation t)
+(setq tab-width 4)
 
 (provide 'init-py)

@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: waf skeleton
+# key: waf
+# --
+def options(opt):
+	pass
+
+
+def configure(cfg):
+	pass
+
+
+def build(bld):
+	pass

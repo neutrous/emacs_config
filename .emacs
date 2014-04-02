@@ -2,15 +2,6 @@
 ;; initial/install required packages first.
 (add-to-list 'load-path "~/.emacs.d")
 
-;; bash-completion.el
-;; (autoload 'bash-completion-dynamic-complete 
-;;   "bash-completion"
-;;   "BASH completion hook")
-;; (add-hook 'shell-dynamic-complete-functions
-;;   'bash-completion-dynamic-complete)
-;; (add-hook 'shell-command-complete-functions
-;;   'bash-completion-dynamic-complete)
-
 ;; package.el initialized first
 (setq package-enable-at-startup nil)
 
@@ -40,9 +31,21 @@
 ;; Load the org module
 (require 'init-org)
 
+;; Load the js configuration
+(require 'init-js)
+
+;; Load html template major mode configuration
+(require 'init-web)
+
 ;; Auto load the ido mode itself
 (require 'ido)
 (ido-mode t)
+
+;; fix the bugs of the default configuration of ecb.
+(setq stack-trace-on-error t)
+(require 'init-ecb)
+
+(require 'sr-speedbar)
 
 ;; Disable auto-back-files
 (setq make-backup-files nil)
@@ -102,8 +105,9 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(column-number-mode t)
- '(custom-enabled-themes (quote (misterioso)))
- '(custom-safe-themes (quote ("9fd20670758db15cc4d0b4442a74543888d2e445646b25f2755c65dcd6f1504b" default)))
+ '(custom-enabled-themes (quote (monokai)))
+ '(custom-safe-themes (quote ("68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" default)))
+ '(ecb-options-version "2.40")
  '(flycheck-highlighting-mode (quote lines))
  '(flycheck-indication-mode nil)
  '(org-catch-invisible-edits (quote show))
@@ -144,12 +148,13 @@
 ;; Customize the special key bindings for MacOS
 (when (eq system-type 'darwin)			; mac specific settings
   (custom-set-variables
-   '(custom-enabled-themes (quote (misterioso)))
+   '(custom-enabled-themes (quote (monokai)))
+   '(custom-safe-themes (quote ("68769179097d800e415631967544f8b2001dae07972939446e21438b1010748c" default)))
    )
   (setq mac-option-modifier 'control)
   (setq mac-command-modifier 'meta)
   (global-set-key [kp-delete] 'delete-char)
-  (set-frame-font "Monaco-14")			; for non-chinese character
+  (set-frame-font "Monaco-16")			; for non-chinese character
   ;; todo: the following things may cause failure on the
   ;; console-opening mode.
   (set-fontset-font 

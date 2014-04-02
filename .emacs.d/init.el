@@ -66,7 +66,8 @@
 		(:name fill-column-indicator	; Draw a fill indicator line.
 			   :after (progn
 						(setq-default fci-rule-column 80)
-						(setq fci-handle-truncate-lines nil)
+						(setq whitespace-style '(face trailing))
+						;;(setq fci-handle-truncate-lines nil)
 						(define-globalized-minor-mode
 						  global-fci-mode fci-mode (lambda()
 													 (fci-mode 1)))
@@ -76,8 +77,10 @@
 							  (if (> (window-width) fci-rule-column)
 								  (fci-mode 1)
 								(fci-mode 0))
-							(fci-mode 0)
-							))
+							(fci-mode 0))
+						  (if (eq major-mode 'Dired)
+							  (fci-mode 0))
+						  )
 						(add-hook 'after-change-major-mode-hook 'auto-fci-mode)
 						(add-hook 'window-configuration-change-hook 'auto-fci-mode)))
 		
@@ -110,6 +113,12 @@
 			   :description "The AC sources for Clang."
 			   :type git
 			   :url "https://github.com/brianjcj/auto-complete-clang.git")
+		
+		(:name web-mode 				; emacs major mode for editing web templates.
+			   :website "https://github.com/fxbois/web-mode"
+			   :description "Emacs major mode for editing web templates."
+			   :type git
+			   :url "https://github.com/fxbois/web-mode.git")
 		))
 
 ;; (unless (string-match "apple-darwin" system-configuration)

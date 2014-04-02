@@ -15,7 +15,7 @@
 
 ;; extra modes auto-complete must support 
 (dolist (mode '(magit-log-edit-mode org-mode text-mode
-		html-mode emacs-lisp-mode markdown-mode
+		html-mode emacs-lisp-mode markdown-mode js-mode
 		go-mode python-mode))
   (add-to-list 'ac-modes mode))
 
