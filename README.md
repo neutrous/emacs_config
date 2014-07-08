@@ -1,25 +1,24 @@
 ## Description ##
 
-	My personal emacs configuration
+My personal emacs configuration
 
 ## Configurations ##
 
 ### Go configuration dependencies ###
 
-	Some configurations depends on the sources of go, check  
-the *.el files for details.
+Some configurations depends on the sources of go, check the *.el files for details.
 
 ### Python configuration dependencies ###
 
 * jedi/epc
 
-	These packages would be automatically downloaded when connected with the internet.
+These packages would be automatically downloaded when connected with the internet.
   
 * pycheckers/pep
 
-	Downloads [pycheckers](https://pypi.python.org/pypi/PyChecker) here.  
+Downloads [pycheckers](https://pypi.python.org/pypi/PyChecker) here.  
 
-	Uses the following command to install pep package:  
+Uses the following command to install pep package:  
 	`python pip install pep`
 
 ### C/C++ configuration dependencies ###
@@ -36,5 +35,5 @@ the *.el files for details.
 
 ### ATTENTIONs ###
 
-	Uses [Ctrl-TAB] to facilitate the autocompletion in CC mode.
+Uses [Ctrl-TAB] to facilitate the autocompletion in CC mode.
 
